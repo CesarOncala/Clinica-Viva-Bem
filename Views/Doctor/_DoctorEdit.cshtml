@@ -17,12 +17,14 @@
 
             <div class="form-group">
                 @Html.LabelFor(o=> o.Name)
-                @Html.TextBoxFor(o=> o.Name, new{ @class= "form-control"})
+                @Html.ValidationMessageFor(o=> o.Name)
+                @Html.TextBoxFor(o=> o.Name, new{ @class= "form-control",@required=true})
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(o=> o.Phone)
-                @Html.TextBoxFor(o=> o.Phone, new{ @class= "form-control" , @placeholder="(xx) 9xxxx-xxxx"})
+                @Html.TextBoxFor(o=> o.Phone, new{ @class= "form-control" , @placeholder="(xx) 9xxxx-xxxx", @required=true})
+                @Html.ValidationMessageFor(o=> o.Phone)
             </div>
 
             <div class="form-group">

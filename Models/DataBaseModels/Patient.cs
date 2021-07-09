@@ -1,13 +1,18 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace  Clinica_Viva_Bem.Models{
-    public class Patient : BaseModel{
-       public string Name { get; set; }
-       public string Address { get; set; }     
-
-       public string PhoneNumber { get; set; }
-
-       public DateTime BirthDay { get; set; }  
+namespace Clinica_Viva_Bem.Models
+{
+    public class Patient : BaseModel
+    {
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Address { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
+        [Required]
+        public DateTime BirthDay { get; set; }
 
     }
 }

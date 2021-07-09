@@ -18,10 +18,11 @@ namespace Web.Repository
                 o.Id,
                 o.Name,
                 o.Address,
-                o.BirthDay,
+                o.BirthDay.ToString("dd/MM/yyyy HH:mm:ss"),
                 o.PhoneNumber,
-                o.DateCreate,
-                $"<a data-id='{o.Id}' class='btn'/>"
+                o.DateCreate.ToString("dd/MM/yyyy HH:mm:ss"),
+                 string.Format("<button data-id='{0}' class='btn btn-primary btnEdit'> Edit </button>" +
+                 "<button data-id='{0}' class='btn btn-danger btnDelete'> Delete </button>",o.Id)
             });
         }
     }

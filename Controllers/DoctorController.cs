@@ -44,9 +44,9 @@ namespace Clinica_Viva_Bem.Controllers
         public async Task<ActionResult> AddDoctor([FromForm] Doctor doctor)
         {
             if (await this._doctorService.Save(doctor) == true)
-                return Json(new { OkResult = true });
+                return Json(new { success = true });
 
-            return Json(new { success = true, message = "The doctor as been added!" });
+            return Json(new { success = false });
         }
 
         [HttpPut]

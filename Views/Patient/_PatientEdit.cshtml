@@ -1,16 +1,19 @@
 @model Patient;
 
-<div class="panel panel-default" >
-    
-    <div class="panel-body">
-         <div>
-                <h1 class>Register Patient</h1>
+<div class="modal-header">
+  <h5 class>Register Patient</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 
-         </div>
-    </div>
 
-    <div class="col-sm-12" >
+<div class="modal-body">
+    <div class="col-sm-12">
         <form asp-action="AddPatient" method="post">
+
+            @Html.HiddenFor(o=> o.Id)
+
             <div class="form-group">
                 @Html.LabelFor(o=> o.Name)
                 @Html.TextBoxFor(o=> o.Name, new { @class = " form-control "})
@@ -23,18 +26,19 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(o=> o.PhoneNumber)
-                @Html.TextBoxFor(o=> o.PhoneNumber, new { @class = " form-control "})
+                @Html.TextBoxFor(o=> o.PhoneNumber, new { @class = " form-control ",  @placeholder="(xx) 9xxxx-xxxx"})
                 @Html.ValidationMessageFor(o=> o.PhoneNumber)
             </div>
             <div class="form-group">
                 @Html.LabelFor(o=> o.BirthDay)
-                <input type="Date" name="BirthDay" class="form-control">
+                <input type="datetime-local" name="BirthDay" class="form-control">
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Send</button>
+                   <button id="save" class="btn btn-primary" type="button">Save</button>
+                 <button btnClose data-dismiss="modal" aria-label="Close" class="btn btn-danger "
+                    type="button">Close</button>
             </div>
         </form>
     </div>
-
 </div>

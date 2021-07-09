@@ -30,13 +30,18 @@ namespace Clinica_Viva_Bem.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPatient([FromForm] Patient patient)
         {
-            if (ModelState.IsValid)
-            {
+          
                 if (await this._patientService.Save(patient) == true)
                     return Json(new { OkResult = true });
-            }
-
+        
             return new StatusCodeResult((int)HttpStatusCode.BadRequest);
+        }
+
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePatient(int id){
+           var entity =  await this._patientService.GetById(id);
+           return PartialView("_PatientEdit",entity);
         }
 
         [HttpDelete]
@@ -55,7 +60,7 @@ namespace Clinica_Viva_Bem.Controllers
         public async Task<IActionResult> List()
         {
 
-            return Json(new { x = await this._patientService.List() });
+            return Json(new { aaData = await this._patientService.List() });
         }
 
     }
