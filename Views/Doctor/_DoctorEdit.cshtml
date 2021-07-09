@@ -1,0 +1,39 @@
+@model Doctor
+
+<div class="modal-header">
+    <h5 class="modal-title">Register Doctor</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+
+    <form action="Doctor/AddDoctor" method="POST">
+        <div class="col-sm-12">
+
+            @Html.HiddenFor(o=> o.Id)
+            @Html.HiddenFor(o=> o.DateCreate)
+
+            <div class="form-group">
+                @Html.LabelFor(o=> o.Name)
+                @Html.TextBoxFor(o=> o.Name, new{ @class= "form-control"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(o=> o.Phone)
+                @Html.TextBoxFor(o=> o.Phone, new{ @class= "form-control" , @placeholder="(xx) 9xxxx-xxxx"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(o=> o.Especialidade)
+                @Html.DropDownListFor(o=> o.Especialidade,(List<SelectListItem>)ViewBag.Especialidades,"",new {@class= "form-control"})
+            </div>
+            <div class="form-group">
+                <button id="save" class="btn btn-primary" type="button">Save</button>
+                <button btnClose data-dismiss="modal" aria-label="Close" class="btn btn-danger "
+                    type="button">Close</button>
+            </div>
+        </div>
+    </form>
+</div>

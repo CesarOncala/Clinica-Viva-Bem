@@ -1,0 +1,40 @@
+@model Consulta;
+
+<div class="panel panel-default">
+
+    <div class="panel-body">
+        <div>
+            <h1 class>Register Consult</h1>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <form asp-action="EditConsulta" method="post">
+
+            <div class="form-group">
+                @Html.LabelFor(o=> o.Date)
+              <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+            </div>
+
+            <div class="form-group">
+                <label for="Doctor"></label>
+                <select name="Doctor" class="form-control" id="">
+                    <option value="1">Gostoso</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Patient"></label>
+                <select name="Patient" class="form-control" id="">
+                    <option value="1">Delicia</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button data-Doctor class="btn btn-danger" type="button">Close</button>
+            </div>
+        </form>
+    </div>
+
+</div>

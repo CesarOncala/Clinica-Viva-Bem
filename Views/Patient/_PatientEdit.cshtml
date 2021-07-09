@@ -1,0 +1,40 @@
+@model Patient;
+
+<div class="panel panel-default" >
+    
+    <div class="panel-body">
+         <div>
+                <h1 class>Register Patient</h1>
+
+         </div>
+    </div>
+
+    <div class="col-sm-12" >
+        <form asp-action="AddPatient" method="post">
+            <div class="form-group">
+                @Html.LabelFor(o=> o.Name)
+                @Html.TextBoxFor(o=> o.Name, new { @class = " form-control "})
+                @Html.ValidationMessageFor(o=> o.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o=> o.Address)
+                @Html.TextBoxFor(o=> o.Address, new { @class = " form-control "})
+                @Html.ValidationMessageFor(o=> o.Address)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o=> o.PhoneNumber)
+                @Html.TextBoxFor(o=> o.PhoneNumber, new { @class = " form-control "})
+                @Html.ValidationMessageFor(o=> o.PhoneNumber)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(o=> o.BirthDay)
+                <input type="Date" name="BirthDay" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
+    </div>
+
+</div>
