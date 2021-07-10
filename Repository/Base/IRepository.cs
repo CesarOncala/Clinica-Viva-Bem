@@ -8,8 +8,8 @@ namespace Web.Repository.Base
     public interface IRepository<T>
     {
         IEnumerable<T> GetByFilter(Func<T, bool> filter);
-        Task<T> GetById(int Id);
-        Task<IEnumerable<T>> GetAll();
+        Task<T> GetById(int Id, string[] Includes=null);
+        Task<IEnumerable<T>> GetAll(string[] Includes=null);
 
         Task<bool> Save(T entity);
 

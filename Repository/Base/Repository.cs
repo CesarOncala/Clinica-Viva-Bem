@@ -22,13 +22,28 @@ namespace Web.Repository.Base
         public IEnumerable<T> GetByFilter(Func<T, bool> filter) =>
         this._context.Set<T>().AsNoTracking().Where(filter);
 
-        public async Task<T> GetById(int Id) => await
-        this._context.Set<T>()
-        .FirstOrDefaultAsync(o => o.Id == Id);
+        public async Task<T> GetById(int Id, string[] Includes = null)
+        {
+            var result = this.getIncludes(Includes);
+            return await result.FirstOrDefaultAsync(o => o.Id == Id);
 
-        public async Task<IEnumerable<T>> GetAll() => await
-        this._context.Set<T>()
-        .AsNoTracking().ToListAsync();
+        }
+
+        private IQueryable<T> getIncludes(string[] Includes)
+        {
+            var _resetSet = this._context.Set<T>().AsNoTracking().AsQueryable();
+
+            if (Includes != null)
+                Includes.ToList().ForEach(include => _resetSet = _resetSet.Include(include));
+
+            return _resetSet;
+        }
+        public async Task<IEnumerable<T>> GetAll(string[] Includes = null)
+        {
+            var result = this.getIncludes(Includes);
+
+            return await result.ToListAsync();
+        }
 
         public async Task<bool> Save(T entity)
         {
@@ -58,7 +73,7 @@ namespace Web.Repository.Base
                 await this._context.SaveChangesAsync();
                 return true;
             }
-            catch (System.Exception e)
+            catch (Exception)
             {
                 return false;
             }

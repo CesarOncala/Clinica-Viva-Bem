@@ -1,15 +1,41 @@
-<h1>Consultas</h1>
+<h1 style="text-align: center;">Medical Consultation
+
+    <img style="border-radius: 40rem;width: 13rem;" src="http://medicinecursos.com.br/blog/wp-content/uploads/2020/05/quanto-custo-uma-consulta-medica-com-especialistas-destaque.jpg" alt="Medico e Paciente">
+</h1>
 
 <button data-add class="btn btn-success">New Consult</button>
 
-<section class="modals">
-    <section class="modal modal-dialog">
-            <section class="modal-content modal-lg"></section>
+<div style="margin-top: 3rem;" class="container">
+   
+    <section class="modals">
+        <div class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+                </div>
+            </div>
+        </div>
+
     </section>
-    </section>
-    
-</section>
+
+<div>
+   <table DataTable class="table table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Agended To</th>
+                <th>Date Create</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+ 
+
+</div>
 
 
-
+@section scripts{
 <script src="~/scriptsViews/Consulta/Index.js"></script>
+}

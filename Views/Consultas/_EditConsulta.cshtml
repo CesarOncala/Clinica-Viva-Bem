@@ -1,40 +1,65 @@
-@model Consulta;
+@model Consulta
 
-<div class="panel panel-default">
 
-    <div class="panel-body">
-        <div>
-            <h1 class>Register Consult</h1>
-        </div>
-    </div>
+<div class="modal-header">
+    <h5 class="modal-title">Register Medical Consult</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 
-    <div class="col-sm-12">
-        <form asp-action="EditConsulta" method="post">
+<div class="modal-body">
+
+    <form>
+        <div class="col-sm-12">
+
+            @Html.HiddenFor(o=> o.Id)
+            @Html.HiddenFor(o=> o.DateCreate)
+            @if (!ViewBag.isEdit)
+            {
+                <div class="form-group">
+                    @Html.LabelFor(o=> o.DoctorId)
+                    @Html.DropDownListFor(o=> o.DoctorId, new List<SelectListItem>())
+                    @Html.ValidationMessageFor(o=> o.DoctorId ,"", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(o=> o.PatientId)
+                    @Html.DropDownListFor(o=> o.PatientId, new List<SelectListItem>())
+                    @Html.ValidationMessageFor(o=> o.PatientId ,"", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    @Html.LabelFor(o=> o.DoctorId)
+                    @Html.DropDownListFor(o=> o.DoctorId, new List<SelectListItem>(){
+                new SelectListItem(){ Value = Model.DoctorId.ToString(), Text = Model.Doctor.Name}
+                })
+                    @Html.ValidationMessageFor(o=> o.DoctorId ,"", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(o=> o.PatientId)
+                    @Html.DropDownListFor(o=> o.PatientId, new List<SelectListItem>(){
+                            new SelectListItem(){Value = Model.PatientId.ToString(), Text = Model.Patient.Name}
+                         })
+                    @Html.ValidationMessageFor(o=> o.PatientId ,"", new { @class = "text-danger" })
+                </div>
+            }
+
+
 
             <div class="form-group">
                 @Html.LabelFor(o=> o.Date)
-              <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+                @Html.TextBoxFor(o=> o.Date,"" ,new{ @class= "form-control", @type="datetime-local"})
+                @Html.ValidationMessageFor(o=> o.Date ,"", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                <label for="Doctor"></label>
-                <select name="Doctor" class="form-control" id="">
-                    <option value="1">Gostoso</option>
-                </select>
+                <button id="save" class="btn btn-primary" type="submit">Save</button>
+                <button btnClose data-dismiss="modal" aria-label="Close" class="btn btn-danger "
+                    type="button">Close</button>
             </div>
-
-            <div class="form-group">
-                <label for="Patient"></label>
-                <select name="Patient" class="form-control" id="">
-                    <option value="1">Delicia</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button data-Doctor class="btn btn-danger" type="button">Close</button>
-            </div>
-        </form>
-    </div>
-
+        </div>
+    </form>
 </div>
