@@ -1,7 +1,7 @@
 @model Patient;
 
 <div class="modal-header">
-  <h5 class>Register Patient</h5>
+    <h5 class>Register Patient</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -10,33 +10,34 @@
 
 <div class="modal-body">
     <div class="col-sm-12">
-        <form asp-action="AddPatient" method="post">
+        <form asp-action="AddPatient" , method="POST">
 
             @Html.HiddenFor(o=> o.Id)
 
             <div class="form-group">
                 @Html.LabelFor(o=> o.Name)
                 @Html.TextBoxFor(o=> o.Name, new { @class = " form-control "})
-                @Html.ValidationMessageFor(o=> o.Name)
+                @Html.ValidationMessageFor(o=> o.Name,"" , new { @class= "text-danger"})
             </div>
             <div class="form-group">
                 @Html.LabelFor(o=> o.Address)
                 @Html.TextBoxFor(o=> o.Address, new { @class = " form-control "})
-                @Html.ValidationMessageFor(o=> o.Address)
+                @Html.ValidationMessageFor(o=> o.Address,"" , new { @class= "text-danger"})
             </div>
             <div class="form-group">
                 @Html.LabelFor(o=> o.PhoneNumber)
-                @Html.TextBoxFor(o=> o.PhoneNumber, new { @class = " form-control ",  @placeholder="(xx) 9xxxx-xxxx"})
-                @Html.ValidationMessageFor(o=> o.PhoneNumber)
+                @Html.TextBoxFor(o=> o.PhoneNumber, new { @class = " form-control ", @placeholder="(xx) 9xxxx-xxxx"})
+                @Html.ValidationMessageFor(o=> o.PhoneNumber,"" , new { @class= "text-danger"})
             </div>
             <div class="form-group">
                 @Html.LabelFor(o=> o.BirthDay)
-                <input type="datetime-local" name="BirthDay" class="form-control">
+                @Html.TextBoxFor(o=> o.BirthDay, "" , new{@type="datetime-local", @class="form-control"})
+                @Html.ValidationMessageFor(o=> o.BirthDay,"" , new { @class= "text-danger"})
             </div>
 
             <div class="form-group">
-                   <button id="save" class="btn btn-primary" type="button">Save</button>
-                 <button btnClose data-dismiss="modal" aria-label="Close" class="btn btn-danger "
+                <button id="save" class="btn btn-primary" type="submit">Save</button>
+                <button btnClose data-dismiss="modal" aria-label="Close" class="btn btn-danger "
                     type="button">Close</button>
             </div>
         </form>

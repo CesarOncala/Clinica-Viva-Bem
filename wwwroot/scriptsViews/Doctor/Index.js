@@ -13,18 +13,21 @@ document.querySelector("[btnNew]").
         getModal("GetRegisterModal", modalEdit, formData, "POST",
             () => {
 
-                document.querySelector("#save").addEventListener('click', (e) => {
-    
 
-                    SendFecthRequest("AddDoctor", "POST",
-                        new FormData(document.querySelector("form")), (e) => {
-                            
-                           if(e.success)
-                                document.querySelector("[btnClose]").click();
-                        
-                        },null,()=>{
-                            table.ajax.reload(null, false)
-                        })
+                document.querySelector("form").addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    if ($("form").valid()) {
+                        SendFecthRequest("AddDoctor", "POST",
+                            new FormData(document.querySelector("form")), (e) => {
+
+                                if (e.success)
+                                    document.querySelector("[btnClose]").click();
+
+                            }, null, () => {
+                                table.ajax.reload(null, false)
+                            })
+                    }
 
 
 
@@ -55,14 +58,14 @@ var table = DataTable("[DataTable]", "List", () => {
 
             getModal("UpdateDoctor", modalEdit, formData, "PUT", () => {
 
-                document.querySelector("#save").addEventListener('click', (e) => {
-
+                document.querySelector("form").addEventListener('submit', (e) => {
+                    e.preventDefault();
                     SendFecthRequest("AddDoctor", "POST",
                         new FormData(document.querySelector("form")), (e) => {
-                           if(e.success)
+                            if (e.success)
                                 document.querySelector("[btnClose]").click();
-                        
-                        },null,()=>{
+
+                        }, null, () => {
                             table.ajax.reload(null, false)
                         })
 

@@ -6,8 +6,12 @@ const getModal = (ActionName, contentSelector, formData, method, funcAfterLoad) 
         body: formData
     }).then(result => result.text())
         .then(result => {
-            document.querySelector(contentSelector).innerHTML = result;
+           let section = document.querySelector(contentSelector);
+           section.innerHTML = result;
+        
             $(".modal").modal("show");
+            var $form = $('form');
+            $.validator.unobtrusive.parse($form);
         })
         .finally(result => (funcAfterLoad == null ? () => { } : funcAfterLoad()))
 

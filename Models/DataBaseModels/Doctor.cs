@@ -8,9 +8,12 @@ namespace Clinica_Viva_Bem.Models
 {
     public class Doctor : BaseModel
     {
-        [Required]
+        [Display(Name = "Telefone")]
+        [Required(ErrorMessage = "O campo telefone é obrigatório")]
         public string Phone { get; set; }
-        [Required(ErrorMessage ="Desgraça")]
+
+        [Display(Name = "Nome Completo")]
+        [Required(ErrorMessage = "O nome é obrigatório!")]
         public string Name { get; set; }
         public Especialidade Especialidade { get; set; }
     }

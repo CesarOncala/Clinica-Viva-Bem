@@ -32,7 +32,7 @@ namespace Clinica_Viva_Bem.Controllers
         {
           
                 if (await this._patientService.Save(patient) == true)
-                    return Json(new { OkResult = true });
+                    return RedirectToAction(nameof(Index));
         
             return new StatusCodeResult((int)HttpStatusCode.BadRequest);
         }

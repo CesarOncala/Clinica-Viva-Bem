@@ -19,6 +19,13 @@ namespace Clinica_Viva_Bem.Controllers
         public IActionResult Index()
         {
             ViewBag.Title = "Doctor";
+              ViewBag.Especialidades = (from o in Enum.GetValues<Enums.Especialidade>()
+                                      select new SelectListItem()
+                                      {
+                                          Text = o.ToString(),
+                                          Value = ((int)o).ToString()
+                                      }
+                                ).ToList();
             return View();
         }
 
