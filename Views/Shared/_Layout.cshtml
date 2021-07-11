@@ -7,15 +7,16 @@
     <title>@ViewData["Title"] - Clinica_Viva_Bem</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/select2.css" rel="stylesheet" />
+     <link href="~/css/select2.min.css" rel="stylesheet" />
     <link href="~/css/toastr.css" rel="stylesheet" />
-   <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/lib/DataTables/datatables.min.css" />
+
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"
-            style="background-color:#3abc72">
+            style="background-color:#2fc0d8">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Clínica Viva Bem</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
@@ -60,10 +61,10 @@
     <script src="~/scriptsViews/global.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/lib/select2/select2.js"></script>
+    <script src="~/lib/select2/select2.min.js"></script>
     <script src="~/lib/Toastr/toastr.js"></script>
+    <script type="text/javascript" src="~/lib/DataTables/datatables.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

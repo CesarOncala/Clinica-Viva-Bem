@@ -6,9 +6,9 @@ const getModal = (ActionName, contentSelector, formData, method, funcAfterLoad) 
         body: formData
     }).then(result => result.text())
         .then(result => {
-           let section = document.querySelector(contentSelector);
-           section.innerHTML = result;
-        
+            let section = document.querySelector(contentSelector);
+            section.innerHTML = result;
+
             $(".modal").modal("show");
             var $form = $('form');
             $.validator.unobtrusive.parse($form);
@@ -40,10 +40,22 @@ const DataTable = (selector, ActionName, completeFunc) => {
             async: true,
             complete: completeFunc,
         },
+        width: 100,
+        "bProcessing": true,
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
+
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5',
+            'print'
+            // customize: function ( doc ) {
+            //     doc.content.splice( 0, 0, {
+            //         text: document.location.pathname
+            //     } );
+            // }
+        ],
 
     });
 }
