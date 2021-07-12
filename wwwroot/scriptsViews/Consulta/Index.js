@@ -1,6 +1,6 @@
 const select2config = (typeSearch) => {
     return {
-        width: 150,
+        width: "100%",
         minimumInputLength: 3,
         placeholder: 'Type Here',
         allowClear: true,
