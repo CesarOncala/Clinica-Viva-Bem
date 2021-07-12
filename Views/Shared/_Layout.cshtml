@@ -7,10 +7,20 @@
     <title>@ViewData["Title"] - Clinica_Viva_Bem</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-     <link href="~/css/select2.min.css" rel="stylesheet" />
+    <link href="~/css/select2.min.css" rel="stylesheet" />
     <link href="~/css/toastr.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/lib/DataTables/datatables.min.css" />
-
+    <style>
+        .modal-header {
+            background-color: #1ccbe8;
+            color: white;
+            text-transform: uppercase;
+        }
+        .nav-item a, .navbar-brand{
+            text-transform: uppercase;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +28,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"
             style="background-color:#2fc0d8">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Clínica Viva Bem</a>
+                <a  style="color: white;" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Clínica Viva Bem</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,15 +36,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Patient"
+                            <a  style="color: white;" class="nav-link " asp-area="" asp-controller="Patient"
                                 asp-action="Index">Patients</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Doctor"
+                            <a   style="color: white;" class="nav-link" asp-area="" asp-controller="Doctor"
                                 asp-action="Index">Doctors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Consultas"
+                            <a class="nav-link "  style="color: white;" asp-area="" asp-controller="Consultas"
                                 asp-action="Index">Consultas</a>
                         </li>
                     </ul>
@@ -64,7 +74,7 @@
     <script src="~/lib/select2/select2.min.js"></script>
     <script src="~/lib/Toastr/toastr.js"></script>
     <script type="text/javascript" src="~/lib/DataTables/datatables.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

@@ -1,6 +1,6 @@
 const select2config = (typeSearch) => {
     return {
-        width: "100%",
+        width: 150,
         minimumInputLength: 3,
         placeholder: 'Type Here',
         allowClear: true,
@@ -29,6 +29,7 @@ const select2config = (typeSearch) => {
     }
 }
 
+//#region New Consultation
 document.querySelector("[data-add]").
     addEventListener('click', (e) => {
 
@@ -40,20 +41,20 @@ document.querySelector("[data-add]").
 
                 $("#PatientId").select2(select2config("patient"));
 
-                document.querySelector("form").addEventListener('submit', (e) => {
+                document.querySelector("[EditConsultation]").addEventListener('submit', (e) => {
                     e.preventDefault();
 
-                    data = new FormData(document.querySelector("form"))
+                    data = new FormData(document.querySelector("[EditConsultation]"))
 
-                    if ($("form").valid()) {
+                    if ($("[EditConsultation]").valid()) {
                         SendFecthRequest("EditConsulta", "POST",
                             data, (e) => {
                                 console.log(e)
-                                if (e.success){
+                                if (e.success) {
                                     toastr.success("Success Writen!")
                                     document.querySelector("[btnClose]").click();
                                 }
-                                else{
+                                else {
                                     toastr.error(e.message)
                                 };
 
@@ -68,7 +69,7 @@ document.querySelector("[data-add]").
 
     });
 
-
+//#endregion
 
 // #region  DataTable
 
@@ -88,18 +89,18 @@ var table = DataTable("[DataTable]", "List", () => {
                 $("#PatientId").select2(select2config("patient"));
 
 
-                document.querySelector("form").addEventListener('submit', (e) => {
+                document.querySelector("[EditConsultation]").addEventListener('submit', (e) => {
                     e.preventDefault();
 
-                    if ($("form").valid()) {
+                    if ($("[EditConsultation]").valid()) {
                         SendFecthRequest("EditConsulta", "POST",
-                            new FormData(document.querySelector("form")), (e) => {
+                            new FormData(document.querySelector("[EditConsultation]")), (e) => {
                                 console.log(e)
-                                if (e.success){
+                                if (e.success) {
                                     toastr.info("Success Edit!")
                                     document.querySelector("[btnClose]").click();
                                 }
-                                else{
+                                else {
                                     toastr.error(e.message)
                                 }
 
@@ -121,15 +122,42 @@ var table = DataTable("[DataTable]", "List", () => {
             o.addEventListener('click', (e) => {
                 let formData = new FormData();
                 formData.append("id", e.target.getAttribute("data-id"))
-                SendFecthRequest("RemoveConsulta", "DELETE", formData, null, null, (e) =>{ table.ajax.reload(null, false)
-                    
+                SendFecthRequest("RemoveConsulta", "DELETE", formData, null, null, (e) => {
+                    table.ajax.reload(null, false)
+
                     toastr.warning("The Consult has been deleted!")
                 })
             })
         })
 
 
-});
+},
+// For the DataTable Plugins we need use JQuery Serialize
+function ( d ) {
+    d.Patient =   document.querySelector("#Patient").value
+    d.Doctor =  document.querySelector("#Doctor").value
+    d.DateStart = document.querySelector("#DateStart").value,
+    d.DateEnd = document.querySelector("#DateEnd").value
+},
+);
+
+
 
 // #endregion
 
+
+//#region Filters
+
+document.querySelector("[btnFilter]").addEventListener('click', () => table.ajax.reload(null, false));
+// document.querySelectorAll("[filterInput]").forEach(o=> o.addEventListener('keyup',()=>{
+//     table.ajax.reload(null, false)
+// }))
+document.querySelector("[clearFilters]").addEventListener('click',()=>{
+    document.getElementById("filters").reset();
+    table.ajax.reload(null,false);
+})
+
+
+
+
+//#endregion

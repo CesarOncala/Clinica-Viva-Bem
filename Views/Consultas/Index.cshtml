@@ -1,24 +1,50 @@
 <h1 style="text-align: center;">Medical Consultation
 
-    <img style="border-radius: 40rem;width: 13rem;" src="http://medicinecursos.com.br/blog/wp-content/uploads/2020/05/quanto-custo-uma-consulta-medica-com-especialistas-destaque.jpg" alt="Medico e Paciente">
+    <img style="border-radius: 40rem;width: 13rem;"
+        src="http://medicinecursos.com.br/blog/wp-content/uploads/2020/05/quanto-custo-uma-consulta-medica-com-especialistas-destaque.jpg"
+        alt="Medico e Paciente">
 </h1>
 
-<button data-add class="btn btn-success">New Consult</button>
+<div style="background: #2fc0d8;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    padding: 9px 36px 8px;
+    box-shadow: 9px 8px 8px -5px;">
+    <label for="DateStart" style="color:white;font-weight:bold">Date Start</label>
+    <label for="DateEnd" style="position: relative;left: 9rem;font-weight:bold; color:white"> Date End</label>
+    <div>
+        <form id="filters">
+            <div class="form-group" style="display: inline-flex;position:relative">
+                <input class="form-control" type="date" id="DateStart" name="DateStart" />
+                <input class="form-control" type="date" id="DateEnd" name="DateEnd" />
+            </div>
+            <div class="form-group" style="display: inline-flex;">
+                <input filterInput placeholder="Type The Patient Name" type="text" class="form-control" name="Patient"
+                    id="Patient" />
+                <input filterInput type="text" placeholder="Type The  Doctor Name" class="form-control" name="Doctor"
+                    id="Doctor" />
+                <button btnFilter type="button" class="btn btn-primary" style="position: relative; margin-left: 1rem">Filter</button>
+                <button clearFilters type="button"  style="position: relative; margin-left: 1rem" class="btn btn-danger">Clear</button>
+            </div>
+        </form>
+    </div>
+    <button data-add class="btn btn-success">New Consult</button>
+</div>
+<div style="margin-top: 3rem;" class="container panel">
 
-<div style="margin-top: 3rem;" class="container">
-   
     <section class="modals">
         <div class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content"></div>
-                </div>
             </div>
         </div>
+</div>
 
-    </section>
+</section>
 
-<div>
-   <table DataTable class="table table-bordered table-hover ">
+<div  class="table-responsive">
+    <table  DataTable class="table table-bordered table-hover ">
         <thead>
             <tr>
                 <th>id</th>
@@ -31,11 +57,12 @@
         </thead>
     </table>
 </div>
- 
+
 
 </div>
 
 
 @section scripts{
 <script src="~/scriptsViews/Consulta/Index.js"></script>
+
 }

@@ -19,8 +19,11 @@ namespace Web.Repository.Base
         {
 
         }
-        public IEnumerable<T> GetByFilter(Func<T, bool> filter) =>
-        this._context.Set<T>().AsNoTracking().Where(filter);
+        public IEnumerable<T> GetByFilter(Func<T, bool> filter, string [] Includes = null) {
+            
+            var result = this.getIncludes(Includes);
+              return  result.Where(filter); 
+        }
 
         public async Task<T> GetById(int Id, string[] Includes = null)
         {

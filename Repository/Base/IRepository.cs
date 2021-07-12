@@ -7,7 +7,7 @@ namespace Web.Repository.Base
 {
     public interface IRepository<T>
     {
-        IEnumerable<T> GetByFilter(Func<T, bool> filter);
+        IEnumerable<T> GetByFilter(Func<T, bool> filter, string [] Includes =null);
         Task<T> GetById(int Id, string[] Includes=null);
         Task<IEnumerable<T>> GetAll(string[] Includes=null);
 

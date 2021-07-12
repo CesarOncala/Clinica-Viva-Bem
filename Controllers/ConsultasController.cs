@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Clinica_Viva_Bem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Web.Models.DataBaseModels;
 using Web.Repository;
 
 namespace Clinica_Viva_Bem.Controllers
@@ -88,9 +89,9 @@ namespace Clinica_Viva_Bem.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(ConsultationTableFiltes filters)
         {
-            var p = await this._consulta.List();
+            var p = await this._consulta.List(filters);
 
             return Json(new { aaData = p });
         }

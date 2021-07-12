@@ -21,8 +21,13 @@ document.querySelector("[btnNew]").
                         SendFecthRequest("AddDoctor", "POST",
                             new FormData(document.querySelector("form")), (e) => {
 
-                                if (e.success)
+                                if (e.success){
+                                    toastr.success("Save Sucess!")
                                     document.querySelector("[btnClose]").click();
+                                }
+                                else{
+                                    toastr.error("Error to Save!")
+                                }
 
                             }, null, () => {
                                 table.ajax.reload(null, false)
@@ -62,8 +67,13 @@ var table = DataTable("[DataTable]", "List", () => {
                     e.preventDefault();
                     SendFecthRequest("AddDoctor", "POST",
                         new FormData(document.querySelector("form")), (e) => {
-                            if (e.success)
+                            if (e.success){
                                 document.querySelector("[btnClose]").click();
+                                toastr.info("Edit Sucess!")
+                            }
+                            else{
+                                toastr.error("Error to Save!")
+                            }
 
                         }, null, () => {
                             table.ajax.reload(null, false)
@@ -83,7 +93,10 @@ var table = DataTable("[DataTable]", "List", () => {
             o.addEventListener('click', (e) => {
                 let formData = new FormData();
                 formData.append("id", e.target.getAttribute("data-id"))
-                SendFecthRequest("RemoveDoctor", "DELETE", formData, null, null, () => table.ajax.reload(null, false))
+                SendFecthRequest("RemoveDoctor", "DELETE", formData, null, null, () => {table.ajax.reload(null, false)
+                
+                    toastr.warning("The Doctor has been removed!")
+                })
             })
         })
 

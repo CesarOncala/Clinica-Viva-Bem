@@ -24,7 +24,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(o=> o.Phone)
-                @Html.TextBoxFor(o=> o.Phone, new{ @class= "form-control" , @placeholder="(xx) 9xxxx-xxxx"})
+                @Html.TextBoxFor(o=> o.Phone, new{ @class= "form-control" ,  @placeholder="(xx) 9xxxx-xxxx"})
                 @Html.ValidationMessageFor(o=> o.Phone,"", new { @class = "text-danger" })
             </div>
 
