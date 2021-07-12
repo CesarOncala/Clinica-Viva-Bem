@@ -89,9 +89,9 @@ namespace Clinica_Viva_Bem.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> List(ConsultationTableFiltes filters)
+        public IActionResult List(ConsultationTableFiltes filters)
         {
-            var p = await this._consulta.List(filters);
+            var p = this._consulta.List(filters);
 
             return Json(new { aaData = p });
         }

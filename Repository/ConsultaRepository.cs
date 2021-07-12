@@ -12,7 +12,7 @@ namespace Web.Repository
     {
         public ConsultaRepository(DataBaseContext context) : base(context) { }
 
-        public async Task<IEnumerable<object>> List(ConsultationTableFiltes o)
+        public IEnumerable<object> List(ConsultationTableFiltes o)
         {
             Func<Consulta, bool> filterData = (c) =>
             {
@@ -38,7 +38,7 @@ namespace Web.Repository
 
             var data = this.GetByFilter(filterData, new[] { "Doctor", "Patient" });
 
-            return data.Select(o => new object[]{
+            return  data.Select(o => new object[]{
                 o.Id,
                 o.Patient.Name,
                 o.Doctor.Name,

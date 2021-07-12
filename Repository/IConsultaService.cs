@@ -8,6 +8,6 @@ namespace Web.Repository
 {
     public interface IConsultaService : IRepository<Consulta>
     {
-       Task<IEnumerable<object>> List(ConsultationTableFiltes filters);
+       IEnumerable<object> List(ConsultationTableFiltes filters);
     }
 }
